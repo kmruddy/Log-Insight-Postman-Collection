@@ -1,0 +1,1309 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Log Insight",
+		"_postman_id": "46fdd8c4-492d-e829-e62f-8383c085960f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aggregated-Events",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Alerts",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/alerts",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get all the alerts created by the current user"
+					},
+					"response": []
+				},
+				{
+					"name": "Find",
+					"request": {
+						"url": "https://{{li}}/api/v1/sessions/{{alertId}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get alert by UUID"
+					},
+					"response": []
+				},
+				{
+					"name": "Find History",
+					"request": {
+						"url": "https://{{li}}/api/v1/sessions/{{alertId}}/history",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get alert history records"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"url": "https://{{li}}/api/v1/sessions/{{alertId}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Delete alert by UUID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appliance",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/appliance/vm-support-bundles/manifests",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get the manifest ID for the log bundle"
+					},
+					"response": []
+				},
+				{
+					"name": "Download",
+					"request": {
+						"url": "https://{{li}}/api/v1/appliance/vm-support-bundles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"target\": \"SINGLE\",\n  \"manifests\": {\n    \"Core:Logs\"\n  }\n}"
+						},
+						"description": "Download the log bundle as an attachement"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth-Providers",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/auth-providers",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Returns a list of supported authentication providers. You can use these providers with the sessions API."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CEIP",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/ceip",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve current Customer Experience Improvement Program participation status."
+					},
+					"response": []
+				},
+				{
+					"name": "Modify",
+					"request": {
+						"url": "https://{{li}}/api/v1/ceip",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"feedback\" : true\n}"
+						},
+						"description": "Enable or disable participation in the Customer Experience Improvement Program."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cluster",
+			"description": "",
+			"item": [
+				{
+					"name": "List VIPs",
+					"request": {
+						"url": "https://{{li}}/api/v1/cluster/vips",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve the list of virtual IP addresses. Includes the IP and FQDN for each, along with current status."
+					},
+					"response": []
+				},
+				{
+					"name": "Create VIP",
+					"request": {
+						"url": "https://{{li}}/api/v1/cluster/vips",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ipAddress\": \"10.11.12.13\",\n  \"fqdn\": \"test1.example.com\",\n  \"tags\": {\n    \"k1\": \"v1\",\n    \"k2\": \"v2\"\n   }\n}"
+						},
+						"description": "Create new virtual IP addresses."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/config/data",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Export LogInsight configuration into a file, which can be used for configuring a fresh Log Insight setup."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "https://{{li}}/api/v1/config/data",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"includeNtpConfig\": \"false\",\n  \"includeAgentsGroups\": \"false\"\n}"
+						},
+						"description": "Import an exported Log Insight configuration."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deployment",
+			"description": "",
+			"item": [
+				{
+					"name": "Approve Join",
+					"request": {
+						"url": "https://{{li}}/api/v1/deployment/approve",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Approves a request to join a server to a Log Insight cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Join Cluster",
+					"request": {
+						"url": "https://{{li}}/api/v1/deployment/join",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"masterFQDN\": \"li-01.example.com\"\n}"
+						},
+						"description": "Joins a newly installed Log Insight server to an existing cluster. When setting up a cluster with multiple servers, call the POST /api/v1/deployment/new API on the first server. Then call this API on the other servers to get them to join the cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cluster",
+					"request": {
+						"url": "https://{{li}}/api/v1/deployment/new",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n    \"userName\": \"admin\",\n    \"password\": \"secret\",\n    \"email\": \"admin@example.com\"\n  }\n}"
+						},
+						"description": "Configures a newly installed Log Insight server as the first member of a new cluster. When setting up a single stand-alone server, call this API to initialize the server. When setting up a cluster with multiple servers, call this API on the first server to create a cluster. Then call POST /api/v1/deployment/join on the other servers to get them to join the cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Wait",
+					"request": {
+						"url": "https://{{li}}/api/v1/deployment/waitUntilStarted",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Waits until the server starts. This can take several minutes to complete."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/events",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "List events"
+					},
+					"response": []
+				},
+				{
+					"name": "List Simple",
+					"request": {
+						"url": {
+							"raw": "https://{{li}}/api/v1/events?view=SIMPLE",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"{{li}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events"
+							],
+							"query": [
+								{
+									"key": "view",
+									"value": "SIMPLE",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "List events"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Licenses",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/licenses",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve the license state, including a list of licenses."
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"url": "https://{{li}}/api/v1/licenses",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\":\"M502V-XXXXX-XXXXX-XXXXX-XXXXX\"\n}"
+						},
+						"description": "Add a new license to the collection. A UUID will be generated to represent the license, and can be used for deletion. The license summary cannot be set, and is derived from the license key. In addition, a single license key cannot be updated in-place. Instead, the old license keys should be deleted after the new license is added."
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "https://{{li}}/api/v1/licenses/{license}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Remove a single license key, specified by its UUID."
+					},
+					"response": [
+						{
+							"id": "47ba8ffe-b357-46de-964c-b32a5823386c",
+							"name": "Delete - License Reference: M502V-XXXXX-XXXXX-XXXXX-XXXXX",
+							"originalRequest": {
+								"url": "https://{{li}}/api/v1/licenses/M502V-XXXXX-XXXXX-XXXXX-XXXXX",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": "Successfully deleted a license."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"description": "",
+			"item": [
+				{
+					"name": "List - Channels",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/channels",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets a list of all the notification channels that are used for alerting. At this time, the list includes SMTP server configuration used for sending alert emails."
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Channels",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/channels",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"channels\": [\n    {\n      \"type\": \"email\",\n      \"config\": {\n        \"server\": \"smtp.example.com\",\n        \"port\": 25,\n        \"sslAuth\": false,\n        \"tls\": false,\n        \"defaultSender\": \"email@example.com\",\n        \"login\": \"user@example.com\",\n        \"password\": \"\"\n      }\n    }\n  ]\n}"
+						},
+						"description": "Updates the configurations for the notification channels that are used for alerting. At this time, the list includes SMTP server configuration used for sending alert emails."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Email",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/email",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve the list of email addresses to which system notifications will be delivered."
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Email",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/email",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"emails\": [\"email1@address.com\", \"email2@address.com\"]\n}"
+						},
+						"description": "Update the list of email addresses to which system notifications will be delivered."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Webhook",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/webhook",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get the list of webhook URLs configured for receiving system notifications."
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Webhook",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/webhook",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"URLs\": [\"http://example.com/webhook1\", \"http://example.com/webhook2\"]\n}"
+						},
+						"description": "Update the list of webhook URLs configured for receiving system notifications."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Config - Retention",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/config/retention-threshold",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve current retention notification threshold configuration. If the amount of data the system can hold at the current ingestion rate is less than the given amount, send a system notification."
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Config - Retention",
+					"request": {
+						"url": "https://{{li}}/api/v1/notification/config/retention-threshold",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sendNotification\" : true,\n  \"dataInterval\" : 2,\n  \"intervalUnit\" : \"MONTHS\"\n}"
+						},
+						"description": "Update the list of email addresses to which system notifications will be delivered."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions - Authentication",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"url": "https://li-mgmt.cpbu.lab/api/v1/sessions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"VMware1!\",\n  \"provider\": \"Local\"\n}"
+						},
+						"description": "Create a Session ID"
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/sessions",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get current session"
+					},
+					"response": []
+				},
+				{
+					"name": "List - Current",
+					"request": {
+						"url": "https://{{li}}/api/v1/sessions/current",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Get current session"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Time",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/time",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve the current time from the server's perspective, expressed as milliseconds-since-epoch UTC."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Config",
+					"request": {
+						"url": "https://{{li}}/api/v1/time/config",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve the current list of time sources for this cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Set - Config",
+					"request": {
+						"url": "https://{{li}}/api/v1/time/config",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeReference\": \"NTP_SERVER\",\n  \"ntpServers\": [\n    \"0.vmware.pool.ntp.org\",\n    \"1.vmware.pool.ntp.org\",\n    \"2.vmware.pool.ntp.org\",\n    \"3.vmware.pool.ntp.org\"\n  ]\n}"
+						},
+						"description": "Set new time sources for this cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Test",
+					"request": {
+						"url": "https://{{li}}/api/v1/time/test",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ntpServers\": [\n    \"0.vmware.pool.ntp.org\",\n    \"1.vmware.pool.ntp.org\",\n    \"2.vmware.pool.ntp.org\",\n    \"3.vmware.pool.ntp.org\"\n  ]\n}"
+						},
+						"description": "Test connectivity to new NTP servers. May take up to 20 seconds per server listed."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UI",
+			"description": "",
+			"item": [
+				{
+					"name": "List - Browser",
+					"request": {
+						"url": "https://{{li}}/api/v1/ui/browser-session",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve current browser session timeout, expressed in minutes."
+					},
+					"response": []
+				},
+				{
+					"name": "Set - Browser",
+					"request": {
+						"url": "https://{{li}}/api/v1/ui/browser-session",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeout\" : 20\n}"
+						},
+						"description": "Set a new browser session timeout, expressed in minutes. Specify -1 for no timeout."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Language",
+					"request": {
+						"url": "https://{{li}}/api/v1/ui/language",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve current language configuration."
+					},
+					"response": []
+				},
+				{
+					"name": "Set - Language",
+					"request": {
+						"url": "https://{{li}}/api/v1/ui/language",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"alwaysUseEnglish\" : true\n}"
+						},
+						"description": "Set a new language configuration."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upgrades",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/upgrades",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets the upgraded version of the Log Insight cluster."
+					},
+					"response": []
+				},
+				{
+					"name": "Process",
+					"request": {
+						"url": "https://{{li}}/api/v1/upgrades",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pakUrl\": \"http://vmware.com/downloads/VMware-vRealize-Log-Insight-x.x.x.pak\"\n}"
+						},
+						"description": "Starts the process of upgrading Log Insight to a new version. This request uploads a PAK file containing the new version, and sets the upgrade status to \"Pending\". PAK file URL should be provided in JSON body. It's also possible to upload PAK file directly as a binary data by setting 'Content-Type' header to 'application/octet-stream' and sending PAK file as a body. It returns the new End User License Agreement (EULA) and upgrade version. To continue with the upgrade, send a PUT /upgrades/{version}/eula with eulaAccepted set to true."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Local",
+					"request": {
+						"url": "https://{{li}}/api/v1/upgrades/local",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets the upgraded version on the Log Insight node that received the API call."
+					},
+					"response": []
+				},
+				{
+					"name": "List - Version",
+					"request": {
+						"url": "https://{{li}}/api/v1/upgrades/{version}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets the cluster-wide status of the upgrade."
+					},
+					"response": [
+						{
+							"id": "835e7fc1-5bea-4b5b-a427-fc6085c4b4e1",
+							"name": "Example - Version Reference: 4.0.0-1234567",
+							"originalRequest": {
+								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": ""
+						},
+						{
+							"id": "3e819ac9-67dc-4299-92bd-596ca83ab0de",
+							"name": "Example - Version Reference: 4.0.0-1234567",
+							"originalRequest": {
+								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": "{\n  \"status\": {\n    \"started\": \"1471285414207\",\n    \"finished\": \"0\",\n    \"version\": \"4.0.0-1234567\",\n    \"pakFileName\": \"VMware-vRealize-Log-Insight-4.0.0-1234567.pak\",\n    \"nodeStatuses\": [{\n      \"status\": \"Upgrading\",\n      \"timestamp\": 1471285430895,\n      \"token\": \"27bcbafc-b99d-4609-9fab-4f3ad937fe5e\"\n      }],\n    \"pakFileUrl\": \"http://vmware.com/downloads/VMware-vRealize-Log-Insight-4.0.0.pak\",\n    \"eulaAccepted\": false,\n    \"masterToken\": \"27bcbafc-b99d-4609-9fab-4f3ad937fe5e\",\n    \"clusterStatus\": \"Upgrading\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "List - Version - EULA",
+					"request": {
+						"url": "https://{{li}}/api/v1/upgrades/{version}/eula",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Accepts or declines the End User License Agreement (EULA) of a product upgrade. Continues the upgrade process if accepted is true, or cancels it otherwise. This request is expected when the upgrade status is \"Pending\"."
+					},
+					"response": [
+						{
+							"id": "02d1b164-f7a0-4388-96ed-1f74902aee7c",
+							"name": "Example - Version Reference: 4.0.0-1234567",
+							"originalRequest": {
+								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567/eula",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"_postman_previewtype": "parsed",
+							"header": [],
+							"cookie": [],
+							"responseTime": 0,
+							"body": "{\n  \"accepted\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Version",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/version",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Retrieve Log Insight version information, in the form Major.Minor.Patch-Build."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vIDM",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "https://{{li}}/api/v1/vidm",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets the current vIDM configuration."
+					},
+					"response": []
+				},
+				{
+					"name": "Configure",
+					"request": {
+						"url": "https://{{li}}/api/v1/vidm",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\": true,\n  \"hostname\": \"vidm.example.com\",\n  \"port\": 443,\n  \"tenant\": \"vIDMTenant\",\n  \"redirectURL\": \"loginsight.example.com\",\n  \"username\": \"vIDMAdmin\",\n  \"password\": \"vIDMPassword\"\n}"
+						},
+						"description": "Configures vIDM integration."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
