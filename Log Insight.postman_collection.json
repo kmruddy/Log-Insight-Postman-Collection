@@ -777,13 +777,13 @@
 			]
 		},
 		{
-			"name": "Sessions - Authentication",
+			"name": "Sessions",
 			"description": "",
 			"item": [
 				{
 					"name": "Login",
 					"request": {
-						"url": "https://li-mgmt.cpbu.lab/api/v1/sessions",
+						"url": "https://{{li}}/api/v1/sessions",
 						"method": "POST",
 						"header": [
 							{
