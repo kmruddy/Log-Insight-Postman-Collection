@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Log Insight",
-		"_postman_id": "46fdd8c4-492d-e829-e62f-8383c085960f",
+		"_postman_id": "8109ea74-f0d8-eed3-abf1-29499bdf3a3f",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -454,7 +454,6 @@
 						"url": {
 							"raw": "https://{{li}}/api/v1/events?view=SIMPLE",
 							"protocol": "https",
-							"auth": {},
 							"host": [
 								"{{li}}"
 							],
@@ -560,7 +559,7 @@
 					},
 					"response": [
 						{
-							"id": "47ba8ffe-b357-46de-964c-b32a5823386c",
+							"id": "98297c89-fadb-45d6-9785-e6a0668210d9",
 							"name": "Delete - License Reference: M502V-XXXXX-XXXXX-XXXXX-XXXXX",
 							"originalRequest": {
 								"url": "https://{{li}}/api/v1/licenses/M502V-XXXXX-XXXXX-XXXXX-XXXXX",
@@ -575,11 +574,12 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								}
+								},
+								"description": ""
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"_postman_previewtype": "parsed",
 							"header": [],
 							"cookie": [],
@@ -782,6 +782,18 @@
 			"item": [
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"auth\", \"Bearer \" + jsonData.sessionId);"
+								]
+							}
+						}
+					],
 					"request": {
 						"url": "https://{{li}}/api/v1/sessions",
 						"method": "POST",
@@ -794,9 +806,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"VMware1!\",\n  \"provider\": \"Local\"\n}"
+							"raw": "{\n  \"username\": \"{{user}}\",\n  \"password\": \"{{pass}}\",\n  \"provider\": \"{{provider}}\"\n}"
 						},
-						"description": "Create a Session ID"
+						"description": "Add test to populate current environment with bearer token"
 					},
 					"response": []
 				},
@@ -1123,7 +1135,7 @@
 					},
 					"response": [
 						{
-							"id": "835e7fc1-5bea-4b5b-a427-fc6085c4b4e1",
+							"id": "43610183-6e06-4fbb-9806-701e85edf922",
 							"name": "Example - Version Reference: 4.0.0-1234567",
 							"originalRequest": {
 								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567",
@@ -1138,11 +1150,12 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								}
+								},
+								"description": ""
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"_postman_previewtype": "parsed",
 							"header": [],
 							"cookie": [],
@@ -1150,7 +1163,7 @@
 							"body": ""
 						},
 						{
-							"id": "3e819ac9-67dc-4299-92bd-596ca83ab0de",
+							"id": "e077ea61-4ee3-4051-a7d4-c4d710f64a96",
 							"name": "Example - Version Reference: 4.0.0-1234567",
 							"originalRequest": {
 								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567",
@@ -1165,11 +1178,12 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								}
+								},
+								"description": ""
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"_postman_previewtype": "parsed",
 							"header": [],
 							"cookie": [],
@@ -1198,7 +1212,7 @@
 					},
 					"response": [
 						{
-							"id": "02d1b164-f7a0-4388-96ed-1f74902aee7c",
+							"id": "0ccc5b5c-2565-4596-ba89-6b14e0bad342",
 							"name": "Example - Version Reference: 4.0.0-1234567",
 							"originalRequest": {
 								"url": "https://{{li}}/api/v1/upgrades/4.0.0-1234567/eula",
@@ -1213,11 +1227,12 @@
 								"body": {
 									"mode": "raw",
 									"raw": ""
-								}
+								},
+								"description": ""
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "Text",
 							"_postman_previewtype": "parsed",
 							"header": [],
 							"cookie": [],
